@@ -3,11 +3,17 @@
 <head>
   <meta charset="utf-8" />
   <title>Content Manager</title>
-  <script src="/vendor/netlify-cms/netlify-cms.js"></script>
+  <script src="/vendor/netlify-cms/netlify-cms.js" defer></script>
 </head>
 <body>
   <script>
-    CMS.init();
+    window.addEventListener('load', () => {
+      if (window.CMS) {
+        window.CMS.init();
+      } else {
+        console.error("CMS failed to load");
+      }
+    });
   </script>
 </body>
 </html>
